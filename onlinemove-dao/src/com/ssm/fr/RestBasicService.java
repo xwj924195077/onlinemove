@@ -1,5 +1,6 @@
 package com.ssm.fr;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,7 +15,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONPObject;
 
 public class RestBasicService {
 	private String serviceAddress;
@@ -25,8 +25,13 @@ public class RestBasicService {
 	private RestTemplate restTemplate = new RestTemplate();
 	private static Map<String, Map<String, String>> serviceConfigs = new HashMap();
 	private int timeOut = -1;
-			
-	protected void init(String code) {
+	private List<String> types = new ArrayList<String>();
+	
+	public RestBasicService(String code) {
+		types.add("create");
+		types.add("update");
+		types.add("delete");
+		types.add("query");
 		
 		Map serviceConfig = (Map) serviceConfigs.get(code);
 		if (null == serviceConfig) {
@@ -119,7 +124,7 @@ public class RestBasicService {
 	}
 
 	public void setServiceRequest(HashMap<String, Object> request) {
-		
+
 		setServiceRequest(JSON.toJSONString(request));
 	}
 
@@ -147,11 +152,19 @@ public class RestBasicService {
 		setServiceRequest(id.toString());
 	}
 
-	public void setServiceRequestQuery(Object query, Object sort, Object pagination) {
-		setServiceRequestQuery(query, sort, pagination, Boolean.valueOf(true));
+	/**
+	 * 1：type,指定是哪种操作 2：params是所需条件
+	 */
+	public void setServiceRequest(String type, Object params) {
+		Map<String, Object> requestMap = new HashMap<>();
+		if (null != type && types.contains(type)) {
+			requestMap.put("type", type);
+			requestMap.put("data", params);
+		}
+		setServiceRequest(JSON.toJSONString(requestMap));
 	}
 
-	public void setServiceRequestQuery(Object query, Object sort, Object pagination, Boolean excludeCount) {
+	/*public void setServiceRequestQuery(Object query, Object sort, Object pagination, Boolean excludeCount) {
 		HashMap request = new HashMap();
 		if (null != query) {
 			request.put("query", query);
@@ -177,10 +190,9 @@ public class RestBasicService {
 		setServiceRequest(JSON.toJSONString(request));
 	}
 
-
 	public String setServiceRequestUpdate(List<Map<String, Object>> updateList) {
-			setServiceRequest(JSON.toJSONString(updateList));
-			return getServiceRequest();
+		setServiceRequest(JSON.toJSONString(updateList));
+		return getServiceRequest();
 	}
 
 	public String setServiceRequestCreateBatch(Object object) {
@@ -193,17 +205,22 @@ public class RestBasicService {
 		return getServiceRequest();
 	}
 
+	*//**
+	 * 新增
+	 * 
+	 * @param request
+	 * @return
+	 *//*
 	public String setServiceRequestCreate(Map request) {
 		setServiceRequest(JSON.toJSONString(request));
 
 		return getServiceRequest();
-	}
+	}*/
 
 	public Boolean checkSuccess() {
 		if ((null != this.serviceResult) && (null != this.serviceResult.get("code"))
-				&& (("1".equals(this.serviceResult.get("code")))
-						|| (("0".equals(this.serviceResult.get("code")))
-								&& (null != this.serviceResult.get("result"))))) {
+				&& (("1".equals(this.serviceResult.get("code"))) || (("0".equals(this.serviceResult.get("code")))
+						&& (null != this.serviceResult.get("result"))))) {
 			return Boolean.valueOf(true);
 		}
 
