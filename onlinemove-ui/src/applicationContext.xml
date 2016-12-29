@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:websocket="http://www.springframework.org/schema/websocket"
+ xmlns:jee="http://www.springframework.org/schema/jee"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+ <!-- 读取属性文件 -->
+ <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <property name="location">
+            <value>classpath:db.properties</value>
+      </property>
+ </bean>
+ 
+ <!-- <bean id="websocket" class="com.ssm.websocket.WebsocketEndPoint"/>  
+
+<websocket:handlers>  
+    <websocket:mapping path="/websocket" handler="websocket"/>  
+    <websocket:handshake-interceptors>  
+    <bean class="com.ssm.interceptor.HandshakeInterceptor"/>  
+    </websocket:handshake-interceptors>  
+</websocket:handlers>   -->
+ 
+ <!-- 配置datasource -->
+ <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="${driver}"/>
+  <property name="url" value="${url}"/>
+  <property name="username" value="${username}"/>
+  <property name="password" value="${password}"/>
+ </bean>
+  <!-- 配置工厂 -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   <property name="dataSource" ref="dataSource"/>
+   <property name="configLocation" value="classpath:mybatis.cfg.xml"/>
+  </bean>
+  
+  <!-- 配置声明式事务 -->
+  <!-- 事务管理器 -->
+ <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"></property>
+ </bean>
+ 
+ <!-- -->
+ <tx:advice id="txAdvice" transaction-manager="txManager">
+  <tx:attributes>
+   <tx:method name="save" propagation="REQUIRED"/>
+   <tx:method name="get" read-only="true"/>
+   <tx:method name="*" propagation="REQUIRED"/>
+  </tx:attributes>
+ </tx:advice>
+ 
+ <!-- -->
+ <aop:config>
+  <aop:pointcut expression="execution(* com.ssm.service.*.*(..))" id="pointcut"/>
+  <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+ </aop:config>
+  
+</beans>
