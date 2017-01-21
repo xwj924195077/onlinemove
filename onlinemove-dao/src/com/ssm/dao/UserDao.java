@@ -2,12 +2,12 @@ package com.ssm.dao;
 
 import java.util.List;
 
-import com.ssm.vo.User;
+import com.ssm.vo.UserInfo;
 
 public interface UserDao {
-	public void save(User user);  
-    public void update(User user);  
+	public void save(UserInfo user);  
+    public void update(UserInfo user);  
     public void delete(int id);  
-    public User findById(int id);  
-    public List<User> findAll(); 
+    public UserInfo findById(int id);  
+    public List<UserInfo> findAll(); 
 }

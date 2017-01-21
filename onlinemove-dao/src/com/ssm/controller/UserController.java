@@ -17,7 +17,7 @@ import com.ssm.dao.UserDao;
 import com.ssm.fr.BasicController;
 import com.ssm.fr.Constant;
 import com.ssm.fr.ResponseObj;
-import com.ssm.vo.User;
+import com.ssm.vo.UserInfo;
 
 @Controller
 @RequestMapping("/user")
@@ -29,7 +29,7 @@ public class UserController extends BasicController {
 	@RequestMapping(value = "/getAllUser", method = RequestMethod.POST)
 	@ResponseBody
 	public String getAllUser() {
-		List<User> list = null;
+		List<UserInfo> list = null;
 		ResponseObj responseObj = new ResponseObj();;
 		responseObj.setCode(Constant.ERROR);
 		try {
@@ -45,7 +45,7 @@ public class UserController extends BasicController {
 	@RequestMapping(value = "/findOneUserById", method = RequestMethod.POST)
 	@ResponseBody
 	public String list(@RequestBody String request) {
-		User user = null;
+		UserInfo user = null;
 		ResponseObj responseObj = new ResponseObj();;
 		responseObj.setCode(Constant.ERROR);
 		try {
@@ -58,8 +58,6 @@ public class UserController extends BasicController {
 		}
 		responseObj.setResult(user);
 		return JSON.toJSONString(responseObj);
-		
-		
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
@@ -73,7 +71,7 @@ public class UserController extends BasicController {
 			JSONObject json = JSON.parseObject(request);
 			Map<String, Object> data = (Map<String, Object>) json.get("data");
 			if (null != data) {
-				User user = new User();
+				UserInfo user = new UserInfo();
 				BeanUtils.populate(user, data);
 				userDao.save(user);
 				responseObj.setCode(Constant.SUCCESS);
@@ -97,7 +95,7 @@ public class UserController extends BasicController {
 			JSONObject json = JSON.parseObject(request);
 			Map<String, Object> data = (Map<String, Object>) json.get("data");
 			if (null != data) {
-				User user = new User();
+				UserInfo user = new UserInfo();
 				BeanUtils.populate(user, data);
 				userDao.update(user);
 				responseObj.setCode(Constant.SUCCESS);
