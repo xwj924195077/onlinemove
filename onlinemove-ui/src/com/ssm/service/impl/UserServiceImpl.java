@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ssm.fr.Constant;
 import com.ssm.fr.RestBasicService;
 import com.ssm.service.UserService;
-import com.ssm.vo.User;
+import com.ssm.vo.UserInfo;
 
 @Service("userService")
 public class UserServiceImpl extends RestBasicService implements UserService {
@@ -25,18 +25,18 @@ public class UserServiceImpl extends RestBasicService implements UserService {
 		setServiceToken("xwj");
 	}
 
-	public List<User> getAllUsers() {
+	public List<UserInfo> getAllUsers() {
 		setServiceEntry(GET_ALL_USER);
 		String type = Constant.QUERY;
-		List<User> list = null;
+		List<UserInfo> list = null;
 		Map<String, Object> resultMap = setServiceRequest(type, null);
 		if (null != resultMap) {
 			String code = (String) resultMap.get("code");
 			if (code.equals(Constant.SUCCESS)) {
 				List<Map<String, Object>> results = (List<Map<String, Object>>) resultMap.get("result");
-				list = new ArrayList<User>();
+				list = new ArrayList<UserInfo>();
 				for (Map map : results) {
-					User user = new User();
+					UserInfo user = new UserInfo();
 					try {
 						BeanUtils.populate(user, map);
 						list.add(user);
@@ -51,7 +51,7 @@ public class UserServiceImpl extends RestBasicService implements UserService {
 	}
 
 	@Override
-	public boolean add(User user) {
+	public boolean add(UserInfo user) {
 		setServiceEntry(CREATE_USER);
 		String type = Constant.CREATE;
 		if (null != user) {
@@ -67,7 +67,7 @@ public class UserServiceImpl extends RestBasicService implements UserService {
 	}
 
 	@Override
-	public boolean update(User user) {
+	public boolean update(UserInfo user) {
 		setServiceEntry(UPDATE_USER);
 		String type = Constant.UPDATE;
 		if (null != user) {
@@ -98,13 +98,13 @@ public class UserServiceImpl extends RestBasicService implements UserService {
 	}
 
 	@Override
-	public User findById(int id) {
+	public UserInfo findById(int id) {
 		setServiceEntry(FIND_ONE_USER_BY_ID);
 		String type = Constant.QUERY;
 		Map<String, Object> resultMap = setServiceRequest(type, id);
-		User user = null;
+		UserInfo user = null;
 		if (null != resultMap) {
-			user = new User();
+			user = new UserInfo();
 			String code = (String) resultMap.get("code");
 			if (code.equals(Constant.SUCCESS)) {
 				Map<String, Object> map = (Map<String, Object>) resultMap.get("result");
