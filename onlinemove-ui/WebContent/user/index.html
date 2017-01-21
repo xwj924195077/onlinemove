@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="../other/bootstrap.min.css" type="text/css"
+	media="screen, project, print">
+<link rel="stylesheet" href="../other/jquery.fancybox-1.3.4.css"
+	type="text/css" media="screen, project, print">
+<link rel="stylesheet" type="text/css" href="../other/jquery-ui.min.css">
+<link rel="stylesheet" href="../other/main-cn.css" type="text/css"
+	media="screen, project, print">
+<link rel="stylesheet" href="../other/mobile.css" type="text/css"
+	media="screen, project, print">
+<script async="" src="../other/analytics.js"></script>
+<script type="text/javascript" src="../other/modernizr-2.8.3.min.js"></script>
+
+
+<title>登录网站</title>
+
+<script type="text/javascript">
+	function validate() {
+		$("#registForm").submit();
+	}
+	
+	function toRegist() {
+		alert("xxx");
+	}
+</script>
+
+</head>
+<body>
+	<div id="container">
+
+		<div id="container">
+			<div class="sign-up-top">
+				<div class="container">
+					<div class="row">
+						<div class="clearfix">
+							<div class="logo pull-left">
+								<a href=""> <img src="../other/logo_new.png" alt="">
+								</a>
+							</div>
+							<div class="language pull-right"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container login-info-cell">
+		<form class="js-personal-information" id="Registerform"
+			novalidate="novalidate" action="login.do">
+
+			<input type="hidden" id="AccountModifyOrRegServiceUrl"
+				name="AccountModifyOrRegServiceUrl"
+				value="login.do">
+
+			<div class="row">
+				<div class="sign-up col-sm-7 center-block float-none">
+					<div class="red-title clearboth">立即登录</div>
+					<div class="sign-contact">
+						<div class="red-line">&nbsp;</div>
+						<a href=""><span
+							id="forward"></span></a> <input type="hidden" id="type" name="type"
+							value="4"> <input type="hidden" id="userid" name="userid"
+							value="www_4002656"> <input type="hidden"
+							id="Officetelephone" name="Officetelephone" value="00000000">
+						<input type="hidden" id="languages" name="languages" value="zh">
+						<input type="hidden" id="MsgRequired" value="必填字段."> <input
+							type="hidden" id="MsgEmail" value="格式不正确."> <input
+							type="hidden" id="MsgVerificationCode" value="验证码不正确."> <input
+							type="hidden" id="Other" value="其他"> <input type="hidden"
+							id="Msgload" value="Submitting"> <input type="hidden"
+							id="MsgPasswordreg" value="密码必须包含字母数字和特殊字符"> <input
+							type="hidden" id="MsgEmailExist"
+							value="Email已存在，如果你忘记了密码，重设密码">
+						<input type="hidden" id="MsgActivation"
+							value="一封激活电子邮件已经发送到您的注册邮箱&lt;a href=&#39;mailto:@mail&#39; class=&#39;bule&#39;&gt; @mail &lt;/a&gt;，请访问邮箱中的激活链接完成账号注册。">
+						<input type="hidden" id="PasswordRequired" value="密码不能为空">
+						<input type="hidden" id="EmailRequired" value="邮箱不能为空"> <input
+							type="hidden" id="FirstNameRequired" value="姓不能为空"> <input
+							type="hidden" id="LastNameRequired" value="名不能为空"> <input
+							type="hidden" id="passwordMax" value="密码最多包含16个字符"> <input
+							type="hidden" id="passwordMin" value="密码至少应当包含8个字符"> <input
+							type="hidden" id="hidAppUrl"
+							value=""> <input
+							type="hidden" id="hidUserIp" name="hidUserIp"
+							value="125.89.198.20"> <input
+							name="registerform_0$countryCodeStr" type="hidden"
+							id="registerform_0_countryCodeStr" value="+86"> <input
+							type="hidden" id="fromsite" name="fromsite"
+							value=""> <input type="hidden"
+							id="checkPwd" value="密码必须同时包含字母、数字和特殊字符且至少8位."> <input
+							type="hidden" id="redirecturl" name="redirecturl" value="">
+						<input type="hidden" id="appurl" name="appurl" value="">
+
+						<div class="personal-infor">
+							<div class="row">
+								<div class="col-sm-12">
+									<p></p>
+								</div>
+								<div class="infor-write clearfix">
+									<div class="col-sm-3 name">
+										<span>用户名 </span>
+									</div>
+									<div class="col-sm-7 input-check clearfix">
+										<input name="Email" type="text" id="UserEmail" maxlength="50"
+											value="" class="error placeholder" aria-required="true"
+											aria-invalid="true" placeholder="注册邮箱">
+									</div>
+									<div class="field_message" id="email_field_message">
+										<label id="UserEmail-error" class="error" for="UserEmail"><i
+											class="icon_error"></i>用户名不能为空</label>
+									</div>
+								</div>
+								<div class="infor-write clearfix">
+									<div class="col-sm-3 name">
+										<span>密码 </span>
+									</div>
+									<div class="col-sm-7 input-check clearfix">
+										<div class="fixed">
+											<input name="Password" id="Password" type="password"
+												maxlength="60" class="js-password-input error placeholder"
+												value="" onblur="checkVerify()" aria-required="true"
+												aria-invalid="true" placeholder=""> <span><a
+												href=""
+												class="js-password-show"
+												data-related-selector=".js-password-input"
+												data-related-selector-img-show=".js-password-hide-img"
+												data-related-selector-img-hide=".js-password-show-img">
+													<img src="../other/SignUp_05.jpg"
+													class="js-password-show-img"><img
+													src="../other/SignUp_03.jpg" class="js-password-hide-img"
+													style="display: none;">
+											</a></span>
+										</div>
+									</div>
+									<div id="PasswordMessage" class="field_message">
+										<label id="Password-error" class="error" for="Password"><i
+											class="icon_error"></i>密码不能为空</label>
+									</div>
+								</div>
+								<div class="infor-write clearfix">
+									<div class="col-sm-3 name clearfix">
+										<span>验证码</span>
+									</div>
+									<div class="col-sm-9 input-code clearfix">
+										<input name="VerificationCode" type="text" value=""
+											onblur="checkVerify()" class="error placeholder"
+											aria-required="true" aria-invalid="true" placeholder="">
+										<div>
+											<img id="VerifyCode" alt="Verify Code" class="ver-code-img"
+												src="../other/VerificationCode"
+												onclick="">
+											<a
+												href=""
+												onclick="$(&#39;#VerifyCode&#39;).click(); return false;">
+												<img src="../other/shuaxin.jpg">
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="bottom-button">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-7">
+										<a class="update-btn js-personal-information-form-submit"
+											id="personalformsubmit"  >登录</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="dloading" class="js-reg-loading" style="display: none;">
+				<div>
+					<img
+						src="../other/loader.gif"
+						style="padding-right: 10px;">Loading...
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<script type="text/javascript" src="../other/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../other/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="../other/plugins.js"></script>
+	<script type="text/javascript" src="../other/jwplayer.js"></script>
+
+	<script type="text/javascript" src="../other/main.js"></script>
+	<script type="text/javascript" src="../other/fastclick.js"></script>
+	<script type="text/javascript" src="../other/CBGcommon.js"></script>
+
+</script>
+	<script type="text/javascript"> try { _satellite.pageBottom(); } catch (e) { }</script>
+	<script type="text/javascript" src="../other/Huawei.Personalization.js"></script>
+	<script type="text/javascript"
+		src="../other/Huawei.Personalization.CBG.js"></script>
+
+	<div id="fancybox-tmp"></div>
+	<div id="fancybox-loading">
+		<div></div>
+	</div>
+	<div id="fancybox-overlay"></div>
+	<div id="fancybox-wrap">
+		<div id="fancybox-outer">
+			<div class="fancybox-bg" id="fancybox-bg-n"></div>
+			<div class="fancybox-bg" id="fancybox-bg-ne"></div>
+			<div class="fancybox-bg" id="fancybox-bg-e"></div>
+			<div class="fancybox-bg" id="fancybox-bg-se"></div>
+			<div class="fancybox-bg" id="fancybox-bg-s"></div>
+			<div class="fancybox-bg" id="fancybox-bg-sw"></div>
+			<div class="fancybox-bg" id="fancybox-bg-w"></div>
+			<div class="fancybox-bg" id="fancybox-bg-nw"></div>
+			<div id="fancybox-content"></div>
+			<a id="fancybox-close"></a>
+			<div id="fancybox-title"></div>
+			<a href="javascript:;" id="fancybox-left"><span class="fancy-ico"
+				id="fancybox-left-ico"></span></a><a href="javascript:;"
+				id="fancybox-right"><span class="fancy-ico"
+				id="fancybox-right-ico"></span></a>
+		</div>
+	</div>
+</body>
+</html>

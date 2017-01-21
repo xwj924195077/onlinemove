@@ -38,8 +38,8 @@
                 <c:forEach items="${list}" var="user">
                   <tr>
 						<td>${user.id }</td>
-                        <td>${user.name }</td>
-                        <td>${user.pwd }</td> 
+                        <td>${user.userName }</td>
+                        <td>${user.password }</td> 
                         <td><a href="delete.do?id=${user.id}">删除</a>
                         	<a href="edit.do?id=${user.id }">修改</a>
                     </tr>                

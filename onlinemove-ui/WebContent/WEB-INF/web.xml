@@ -23,4 +23,14 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+     <servlet-name>validateCode</servlet-name>
+     <servlet-class>com.ssm.tool.DrawImage</servlet-class>
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>validateCode</servlet-name>
+     <url-pattern>/validateCode.do</url-pattern>
+ </servlet-mapping>
+ 
 </web-app>
